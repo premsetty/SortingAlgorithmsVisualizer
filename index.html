@@ -1,0 +1,34 @@
+<html>
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <body>
+        <h1 id="heading">Sorting Algorithm Visualizer</h1>
+        <div id="sort">
+            <div id="sliderDiv" class="neumorphismSlider">
+                <label for="slider">No. of elements & Speed:</label>
+                <input type="range" min="0" max="120" value="80" step="40" class="slider" id="slider" name="slider" onchange="sliderChange()">
+            </div>
+            <button class = "neumorphismButton" id="generate">Generate New Array</button>
+            <button class = "neumorphismButton" id="bubbleSortBtn" disabled="true">Bubble Sort</button>
+            <button class = "neumorphismButton" id="insertionSortBtn" disabled="true">Insertion Sort</button>
+            <button class = "neumorphismButton" id="mergeSortBtn" disabled="true">Merge Sort</button>
+            <button class = "neumorphismButton" id="selectionSortBtn" disabled="true">Selection Sort</button>
+        </div>
+        
+        <div id="values">
+            <div id="barsDiv">
+
+            </div>
+        </div>
+
+        <div id="profileDiv">
+            <a target="_blank" href="https://www.linkedin.com/in/prem-r-r" id="profile">By Prem R R</a>
+        </div>
+        <script src="./scripts/script.js"></script>
+        <script src="./scripts/animations.js"></script>
+        <script src="./scripts/bubbleSort.js"></script>
+        <script src="./scripts/insertionSort.js"></script>
+        <script src="./scripts/mergeSort.js"></script>
+        <script src="./scripts/selectionSort.js"></script>
+    </body>
+</html>
