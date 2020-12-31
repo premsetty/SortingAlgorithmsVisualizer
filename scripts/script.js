@@ -1,5 +1,5 @@
 var elements = [];
-var totalBars = 60, width = "7px", gap = "4px";
+var totalBars = 60, width = "7px", gap = "5px";
 var divs = [];
 var flag = 0;  // if array is previously created, flag = 1, else 0
 var blue = "#326da8";

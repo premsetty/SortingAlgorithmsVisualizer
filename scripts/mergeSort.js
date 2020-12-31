@@ -1,47 +1,54 @@
-//Merge Sort Code
+//Merge Sort Code 2
 function mergeSorter(){
     disableButtons();
     initialDelay = delays*5;
     moreDelay = initialDelay;
-    merge(0, elements.length-1);
+    merge(elements, 0, elements.length-1);
+    for(var i = 0; i <elements.length; i++){
+        updateDiv(i, elements[i], "green");
+    }
     enableButtons();
 }
 
-function mergeSort(l, m, r){
-    var p = l, q = m+1;
-    var array = [], k = 0;
-    for(var i=l; i<=r; i++){
-        if(p>m){
-            array[k++] = elements[q++];
-            updateDiv(q-1, elements[q-1], "orange");
-        }
-        else if(q>r){
-            array[k++] = elements[p++];
-            updateDiv(p-1, elements[p-1], "orange");
-        }
-        else if(elements[p] < elements[q]){
-            array[k++] = elements[p++];
-            updateDiv(p-1, elements[p-1], "orange");
+function mergeSort(elements, l, m, r){
+    var i = l, j = m + 1; k = 0;
+
+    var temp = [];
+    while((i <= m) && (j <= r)){
+        if(elements[i] < elements[j]){
+            temp[k++] = elements[i++];
+            updateDiv(i-1, elements[i-1], "orange");
         }
         else{
-            array[k++] = elements[q++];
-            updateDiv(q-1, elements[q-1], "orange");
+            temp[k++] = elements[j++];
+            updateDiv(j-1, elements[j-1], "orange");
         }
     }
 
-    for(var x=0; x<k; x++){
-        elements[l++] = array[x];
-        updateDiv(l-1, elements[l-1], "green");
+    while(j <= r){
+        temp[k++] = elements[j++];
+        updateDiv(j-1, elements[j-1], "orange");
     }
+    while(i <= m){
+        temp[k++] = elements[i++];
+        updateDiv(i-1, elements[i-1], "orange");
+    }
+
+    for(i = l, k = 0; i <= r; i++, k++){
+        elements[i] = temp[k];
+        updateDiv(i, elements[i], blue);
+    }
+    temp = [];
 }
 
-function merge(l, r){
+function merge(elements, l, r){
     if(l < r){
         var m = Math.floor((l+r)/2);
         updateDiv(m, elements[m], pink);
 
-        merge(l, m);
-        merge(m+1, r);
-        mergeSort(l, m, r);
+        merge(elements, l, m);
+        merge(elements, m+1, r);
+        if(elements[m] > elements[m+1])
+            mergeSort(elements, l, m, r);
     }
 }
